@@ -6,7 +6,7 @@ APP="build/Paint.app"
 rm -rf build && mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources" build/tmp
 
 for arch in arm64 x86_64; do
-  if swiftc -O -swift-version 5 -target "$arch-apple-macos15.0" -framework AppKit \
+  if swiftc -O -swift-version 5 -target "$arch-apple-macos14.0" -framework AppKit \
        Sources/*.swift -o "build/tmp/Paint-$arch" 2>build/tmp/err-$arch.txt; then
     echo "built $arch"
   else

@@ -429,7 +429,8 @@ final class CanvasView: NSView, NSTextViewDelegate {
             switch h {
             case .right: cur = .resizeLeftRight
             case .bottom: cur = .resizeUpDown
-            case .corner: cur = NSCursor.frameResize(position: .bottomRight, directions: .all)
+            case .corner:
+                if #available(macOS 15.0, *) { cur = NSCursor.frameResize(position: .bottomRight, directions: .all) } else { cur = .crosshair }
             }
         } else if settings.tool == .text {
             cur = .iBeam
